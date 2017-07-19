@@ -34,7 +34,7 @@ ggplot(test_df,aes(x = a,y = b)) +
 
 ![](README-unnamed-chunk-3-1.png)
 
-It is especially usefull to visualize the output of ordination functions with a polygon per group, e.g.
+It is especially useful to visualize the output of ordination functions with a polygon per group, e.g.
 
 ``` r
 library(vegan)
