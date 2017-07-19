@@ -1,0 +1,62 @@
+---
+title: "ggConvexHull : Add a convex hull geom to ggplot2"
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+This package adds a geom_convexhull function, extending the geom_polygon one.
+
+## To install : 
+```{r eval=FALSE}
+library(devtools)
+devtools::install_github("cmartin/ggConvexHull")
+```
+
+## Examples : 
+
+The simplest case
+```{r comment = NA}
+library(ggplot2)
+library(ggConvexHull)
+
+n <- 10
+test_df <- data.frame(
+  a = runif(n),
+  b = runif(n)
+)
+
+ggplot(test_df,aes(x = a,y = b)) +
+  geom_point() +
+  geom_convexhull(alpha = 0.3, fill = "blue")
+
+```
+
+It is especially usefull to visualize the output of ordination functions with 
+a polygon per group, e.g. 
+```{r comment = NA, message=FALSE}
+library(vegan)
+library(ggplot2)
+library(ggConvexHull)
+
+data("iris")
+
+df <- as.data.frame(
+  scores(rda(iris[,1:3]))$site
+)
+
+df$Species = iris$Species
+
+ggplot(df,aes(x = PC1, y = PC2,col = Species)) +
+  geom_convexhull(alpha = 0.3,aes(fill = Species)) + 
+  geom_point() +
+  theme_minimal()
+```
