@@ -15,3 +15,5 @@ Suggests: testthat
 Imports: ggplot2
 Depends: R (>= 3.0.2)
 RoxygenNote: 6.0.1
+URL: http://github.com/cmartin/ggConvexHull
+BugReports: http://github.com/cmartin/ggConvexHull/issues
